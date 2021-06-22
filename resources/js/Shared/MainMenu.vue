@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="mb-4">
+      <language-switcher></language-switcher>
+    </div>
+    <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('dashboard')">
         <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
@@ -29,10 +32,12 @@
 
 <script>
 import Icon from '@/Shared/Icon'
+import LanguageSwitcher from '@/Shared/LanguageSwitcher'
 
 export default {
   components: {
     Icon,
+    LanguageSwitcher,
   },
   methods: {
     isUrl(...urls) {
