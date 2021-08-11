@@ -29,21 +29,13 @@ mix.extend( 'i18n', new class {
 
 mix.i18n()
   .js('resources/js/app.js', 'public/js')
-  .vue()
+  .vue({ runtimeOnly: true })
+  .alias({ '@': 'resources/js' })
   .postCss('resources/css/app.css', 'public/css', [
     // prettier-ignore
     cssImport(),
     cssNesting(),
     require('tailwindcss'),
   ])
-  .webpackConfig({
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
-    resolve: {
-      alias: {
-        vue$: 'vue/dist/vue.runtime.esm.js',
-        '@': path.resolve('resources/js'),
-      },
-    },
-  })
   .version()
   .sourceMaps()
